@@ -11,25 +11,44 @@ public class Hangman {
 
         System.out.println("The chosen word is: " + chosenWord);//This is to test the program
         System.out.println();
-        ArrayList<String> letters = new ArrayList<String>();
+        ArrayList<String> letters = new ArrayList<>();
         boolean gameOver = false;
+        int lives = 10;
 
         for(int i = 0; i <= chosenWord.length() - 1; i++){
             letters.add("_ ");
             //System.out.println(chosenWord[i]);
+           // System.out.println(format(letters));
         }
-        String display = String.join(" ", letters);
-        System.out.println(display);
+  //display was here
+        System.out.println(format(letters));
         while(!gameOver){
             Scanner scnr = new Scanner(System.in);
             System.out.println("Guess a letter: ");
             String guess = scnr.nextLine();
+            //guess = (char) guess;
 
             //chosenWord.c
+            for(int i = 0; i <= chosenWord.length() - 1; i++) {
+                    //System.out.println(chosenWord.charAt(i));
+                if(chosenWord.charAt(i)==guess.charAt(0)){
+                    letters.remove(i);
+                    //System.out.println(letters);
+                    letters.add(i ,guess);
+                    //System.out.println(letters);
+                }
+               // System.out.println(display);
+
+            }
+            System.out.println(format(letters));
         }
 
 	//words.add(words.add( write your code here
         //ArrayList<String> cars = new ArrayList<>();
         //cars.add("Toyota");
+    }
+    public static String format(ArrayList<String> letters){
+        String display = String.join(" ", letters);
+        return(display);
     }
 }
