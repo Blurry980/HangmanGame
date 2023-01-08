@@ -1,16 +1,19 @@
 package Project1;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Hangman {
     public static Gameword gameWord = new Gameword(new ArrayList<String>());
     public static String chosenWord = gameWord.getWord();
+    public static HangmanArt art = new HangmanArt();
 
     //public static boolean gameOver = false;
     public static void main(String[] args) {
 
-        System.out.println("The chosen word is: " + chosenWord);//This is to test the program
+        //System.out.println("The chosen word is: " + chosenWord);//This is to test the program
+        System.out.println(art.titleArt());
         System.out.println();
         ArrayList<Character> letters = new ArrayList<>();
         boolean gameOver = false;
@@ -55,11 +58,12 @@ public class Hangman {
                 }
             }
             if(!letters.contains('_')){
-                System.out.println("You win");
+                System.out.println("You win!");
                 gameOver = true;
             }
 
             System.out.println(format(letters));
+            System.out.println(art.printStage(lives));
 
 
         }
